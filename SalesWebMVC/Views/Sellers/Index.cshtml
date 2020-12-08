@@ -3,7 +3,13 @@
     ViewData["Title"] = "Sellers";
 }
 
-<h2>@ViewData["Tittle"]</h2>
+<h2>
+    @ViewData["Tittle"]
+</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-default">Create new</a>
+</p>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -40,9 +46,9 @@
                     @Html.DisplayFor(modelItem => item.BaseSalary)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="item.id">Edit</a><a/>
-                    <a asp-action="Details" asp-route-id="item.id">Details</a><a/>
-                    <a asp-action="Delete" asp-route-id="item.id">Delete</a><a/>
+                    <a asp-action="Edit" asp-route-id="item.id">Edit</a><a />
+                    <a asp-action="Details" asp-route-id="item.id">Details</a><a />
+                    <a asp-action="Delete" asp-route-id="item.id">Delete</a><a />
                 </td>
             </tr>
         }
