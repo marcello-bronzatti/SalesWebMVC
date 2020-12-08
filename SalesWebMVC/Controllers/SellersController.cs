@@ -74,7 +74,7 @@ namespace SalesWebMVC.Controllers
                 await _sellerService.RemoveAsync(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch (IntegrityException e)
+            catch (IntegrityException)
             {
                 return RedirectToAction(nameof(Error), new { message = $"Can't delete Seller because he/she has sales" });
             }
