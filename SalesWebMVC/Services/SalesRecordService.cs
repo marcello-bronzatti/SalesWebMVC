@@ -36,5 +36,24 @@ namespace SalesWebMVC.Services
                 .ToListAsync();
         }
 
+        public async Task<List<IGrouping<Department, SalesRecord>>> FindByDateGroupingAsync(DateTime? initial, DateTime? final)
+        {
+            var result = from obj in _context.SalesRecord select obj;
+            if (initial.HasValue)
+            {
+                result = result.Where(x => x.Date >= initial.Value);
+            }
+            if (final.HasValue)
+            {
+                result = result.Where(x => x.Date <= final);
+            }
+
+            return await result
+                .Include(x => x.Seller)
+                .Include(x => x.Seller.Department)
+                .OrderByDescending(x => x.Date)
+                .GroupBy(x => x.Seller.Department)
+                .ToListAsync();
+        }
     }
 }
